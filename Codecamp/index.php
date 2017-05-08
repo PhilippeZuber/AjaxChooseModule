@@ -53,29 +53,40 @@ if(isset($_GET['filter-submit']))       //Button, der die ausgewählten Daten au
                 <form class="form-inline" method="get" action="index.php">
                     <div class="form-group">
                         <select name="marke" id="marke">
-                            <option value="0" selected>Wähle eine Biermarke aus</option>
+                            <option value="0" selected>Welche Marke ist dir lieb?</option>
                             <option value="1">Schützengarten</option>
                             <option value="2">Feldschlösschen</option>
+                            <option value="3">Appenzeller Bier</option>
+                            <option value="4">Brauerei Fischerstube</option>
+                            <option value="5">Cardinal</option>
+                            <option value="6">Doppelleu</option>
                         </select>
                     </div>
                     <br><br>
                     <h2>Biersorte</h2>
 
                     <select name="sorte" id="sorte">
-                        <option value="">Wähle eine Biersorte aus</option>
+                        <option value="">Wie solls schmecken?</option>
                         <option value="1">Lager</option>
+                        <option value="2">Alkoholfrei</option>
                         <option value="3">Weizen</option>
+                        <option value="4">Naturtrüeb</option>
+                        <option value="5">Amber</option>
+                        <option value="6">Panache</option>
+                        <option value="7">Ale</option>
+                        <option value="8">Dunkel</option>
                     </select>
                     <br><br>
                     <h2>Einheit</h2>
 
                     <select name="form" id="form">
-                        <option value="">Wie gross soll dein Bier sein?</option>
-                        <option value="1">33cl</option>
-                        <option value="2">50cl</option>
+                        <option value="">Wie trinkst du es am liebsten?</option>
+                        <option value="1">Glas</option>
+                        <option value="2">Dose</option>
+                        <option value="3">Flasche</option>
                     </select>
                     <br><br>
-                    <h2>Wie solls denn sein?</h2>
+                    <h2>Mit oder ohne Pfupf?</h2>
 
                     <select name="alkohol" id="alkohol">
                         <option value="">Alkoholfrei?</option>
