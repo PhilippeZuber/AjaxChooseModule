@@ -47,9 +47,10 @@
              $sql_ok = true;
              }
 
-    $sql = substr_replace($sql, ' ', -4, 3);    /*Das letzte AND im sql-Befehl wird gelöscht.
+        $sql = substr_replace($sql, ' ', -4, 3);    /*Das letzte AND im sql-Befehl wird gelöscht.
                                                     Man weiss ja nicht, welche Variablen alle übergeben werden.*/
-    return get_result($sql);
+        $sql .="ORDER BY name;";
+        return get_result($sql);
 
 
  }

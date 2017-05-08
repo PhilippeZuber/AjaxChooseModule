@@ -11,24 +11,24 @@ session_start();
 
 require_once('system/data.php');
 require_once('system/security.php');
-require_once('get_biermarke.php');
+// require_once('get_biermarke.php');
 
 
 
-if(isset($_GET['filter-submit']))       //Button, der die ausgewählten Daten ausliest und abschickt.
-{
-  $marke = filter_data($_GET['marke']);
-  $sorte = filter_data($_GET['sorte']);
-  $form = filter_data($_GET['form']);
-  $alkohol = filter_data($_GET['alkohol']);
-
-  $selection = get_selection($marke, $sorte, $form, $alkohol);   //Funktion zur Erstellung des sql-Befehls wird gestartet.
-  while($selection_output = mysqli_fetch_assoc($selection)){    //Die erhaltenen Werte müssen in ein Array umgewandelt werden
-      echo "$selection_output[name]<br>";   //Mit der While-Schlaufe wird für jeden Inhalt des Arrays, dessen Name ausgegeben.
-  //print_r($selection_output);
-    }
-
-  }
+// if(isset($_GET['filter-submit']))       //Button, der die ausgewählten Daten ausliest und abschickt.
+// {
+//   $marke = filter_data($_GET['marke']);
+//   $sorte = filter_data($_GET['sorte']);
+//   $form = filter_data($_GET['form']);
+//   $alkohol = filter_data($_GET['alkohol']);
+//
+//   $selection = get_selection($marke, $sorte, $form, $alkohol);   //Funktion zur Erstellung des sql-Befehls wird gestartet.
+//   while($selection_output = mysqli_fetch_assoc($selection)){    //Die erhaltenen Werte müssen in ein Array umgewandelt werden
+//       echo "$selection_output[name]<br>";   //Mit der While-Schlaufe wird für jeden Inhalt des Arrays, dessen Name ausgegeben.
+//   //print_r($selection_output);
+//     }
+//
+//   }
 
 
  /* $result = filter_user($email, $gender, $firstname, $lastname);
@@ -52,8 +52,8 @@ if(isset($_GET['filter-submit']))       //Button, der die ausgewählten Daten au
                 <h2>Biermarke</h2>
                 <form class="form-inline" method="get" action="index.php">
                     <div class="form-group">
-                        <select name="marke" id="marke">
-                            <option value="0" selected>Welche Marke ist dir lieb?</option>
+                        <select name="marke" class="auswahl" id="marke">
+                            <option value="" selected>Welche Marke ist dir lieb?</option>
                             <option value="1">Schützengarten</option>
                             <option value="2">Feldschlösschen</option>
                             <option value="3">Appenzeller Bier</option>
@@ -65,7 +65,7 @@ if(isset($_GET['filter-submit']))       //Button, der die ausgewählten Daten au
                     <br><br>
                     <h2>Biersorte</h2>
 
-                    <select name="sorte" id="sorte">
+                    <select name="sorte" class="auswahl" id="sorte">
                         <option value="">Wie solls schmecken?</option>
                         <option value="1">Lager</option>
                         <option value="3">Weizen</option>
@@ -78,7 +78,7 @@ if(isset($_GET['filter-submit']))       //Button, der die ausgewählten Daten au
                     <br><br>
                     <h2>Einheit</h2>
 
-                    <select name="form" id="form">
+                    <select name="form" class="auswahl" id="form">
                         <option value="">Wie trinkst du es am liebsten?</option>
                         <option value="1">Glas</option>
                         <option value="2">Dose</option>
@@ -87,7 +87,7 @@ if(isset($_GET['filter-submit']))       //Button, der die ausgewählten Daten au
                     <br><br>
                     <h2>Mit oder ohne Pfupf?</h2>
 
-                    <select name="alkohol" id="alkohol">
+                    <select name="alkohol" class="auswahl" id="alkohol">
                         <option value="">Alkoholfrei?</option>
                         <option value="1">Nein</option>
                         <option value="0">Ja</option>
@@ -113,29 +113,36 @@ if(isset($_GET['filter-submit']))       //Button, der die ausgewählten Daten au
     <script>
     // ajax Befehle:
 
-    $("#marke").change(function(event) {         // Bei Klick auf den "posten"-Button
+    $(".auswahl").change(function(event) {         // Bei Klick auf den "posten"-Button
     event.preventDefault();                           // Absenden des Formulars unterbinden
     var marke = $('#marke option:selected').attr( "value");
-    // alert(marke);   // User_ID auslesen
+    var sorte = $('#sorte option:selected').attr( "value");
+    var form = $('#form option:selected').attr( "value");
+    var alkohol = $('#alkohol option:selected').attr( "value");
+    console.log(marke);   // User_ID auslesen
 
     // txt = $("#the_text").val();   // Posttext aus der Textarea auslesen
     // if(txt != ""){                // Sicherheitsabfrage, damit keine leeren Posts erzeugt werden.
     //   $("#the_text").val("");     // Text in Textarea löschen
 
-        var request = $.ajax({                    // Initialisierung eines AJAX-Requests
-          url: "get_biermarke.php",               // Adresse des Skripts
-          method: "POST",                           // Sendemethode der Daten GET / POST
-          data: { biermarke: marke}, // zu sendenden Daten
-          dataType: "html"                          // was für ein Datentyp kommt zurück
-        });
+        $.ajax({                    // Initialisierung eines AJAX-Requests
+          url: "get_biermarke.php",               // Die in Ajax ablaufenden Funktionen müssen zwingend in diesem esternen File stattfinden.
+          type: "POST",                           // Sendemethode der Daten GET / POST
+          data: { biermarke: marke, biersorte: sorte, bierform: form, alkoholgehalt: alkohol}, // zu sendenden Daten; Die Attribute werden als "Variable" gesendet.
+          dataType: "text",                 //Die Form der Daten. Kann z.B. auch HTML oder Jason sein.
 
-        request.success(function( get_marke ) {             // Wenn der Request Erfolg hatte
-          html = $.parseHTML( get_marke );                    // empfangenen Text als HTML parsen
-          $(html).hide().prependTo("#posts").show(500); // html an den Anfang von #posts einfügen und einblenden
-        });
+          success:function( get_data ) {             // Bei erfolgreichem Request: Den zu empfangenden Daten einen "Namen" zuweisen.
+            // console.log(get_data);
+            html = $.parseHTML( get_data );                    // empfangenen Text als HTML parsen
+            $("#output").empty();                           //Das Ausgabefeld mit der ID output wird geleert
+            $(html).hide().prependTo("#output").show(500); // Das Ausgabefeld wird mit dem Inhalt gefüllt.
 
-        request.fail(function( jqXHR, textStatus ) {
-          // Aktion, wenn ein Fehler auftritt.
+        }
+
+
+
+        // request.fail(function( jqXHR, textStatus ) {
+        //   // Aktion, wenn ein Fehler auftritt.
         });
     });
 
