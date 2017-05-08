@@ -10,6 +10,7 @@ session_start();
 
 require_once('system/data.php');
 require_once('system/security.php');
+require_once('get_biermarke.php');
 
 
 
@@ -51,7 +52,7 @@ if(isset($_GET['filter-submit']))       //Button, der die ausgewählten Daten au
                 <form class="form-inline" method="get" action="index.php">
                     <div class="form-group">
                         <select name="marke" id="marke">
-                            <option value="">Wähle eine Biermarke aus</option>
+                            <option value="0" selected>Wähle eine Biermarke aus</option>
                             <option value="1">Schützengarten</option>
                             <option value="2">Feldschlösschen</option>
                         </select>
@@ -103,7 +104,8 @@ if(isset($_GET['filter-submit']))       //Button, der die ausgewählten Daten au
 
     $("#marke").change(function(event) {         // Bei Klick auf den "posten"-Button
     event.preventDefault();                           // Absenden des Formulars unterbinden
-    var marke = $( "#marke").attr( "value");    // User_ID auslesen
+    var marke = $('#marke option:selected').attr( "value");
+    // alert(marke);   // User_ID auslesen
 
     // txt = $("#the_text").val();   // Posttext aus der Textarea auslesen
     // if(txt != ""){                // Sicherheitsabfrage, damit keine leeren Posts erzeugt werden.
