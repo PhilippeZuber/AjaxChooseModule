@@ -122,10 +122,14 @@ require_once('system/security.php');
 
     $(".auswahl").change(function(event) {         // Bei Klick auf den "posten"-Button
     event.preventDefault();                           // Absenden des Formulars unterbinden
-    var marke = $('#marke option:selected').attr( "value"); //
+    var marke = $('#marke option:selected').attr( "value");
     var sorte = $('#sorte option:selected').attr( "value");
     var form = $('#form option:selected').attr( "value");
     var alkohol = $('#alkohol option:selected').attr( "value");
+    // var marke = $('#marke').val();//
+    // var sorte = $('#sorte').val();
+    // var form = $('#form').val();
+    // var alkohol = $('#alkohol').val();
 
 
     // txt = $("#the_text").val();   // Posttext aus der Textarea auslesen

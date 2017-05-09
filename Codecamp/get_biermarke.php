@@ -17,7 +17,11 @@ echo "<h2>Das Bier-Orakel hat entschieden:</h2><br>";
         echo "$output[name]<br>";
     }
 
+    $row_count = mysqli_num_rows($ausgabe);
 
+                if($row_count == 0){
+                    echo "Du hast einen ausserordentlichen Geschmack, welchem ich leider nicht dienen kann! <br><b>Dini Muäter</b> trinkt au so Bier!!";
+                }
 
    //Mit der While-Schlaufe wird für jeden Inhalt des Arrays, dessen Name ausgegeben.
   //print_r($selection_output);
