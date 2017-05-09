@@ -2,7 +2,9 @@ body {
 	background-image: url("bilder/background_bier2.jpg");
     background-size: 100%;
 	background-repeat: no-repeat;
-	font-size: 14rem;
+}
+h1 {
+	font-size: 14 rem;
 }
 
 .container-fluid{
