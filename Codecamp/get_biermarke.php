@@ -17,9 +17,12 @@ while($output = mysqli_fetch_assoc($ausgabe)){    //Die erhaltenen Werte müssen
   //print_r($selection_output);
 
 
-
+// if ($output = ""){
+//      echo "Du bist zu wählerisch! Es gibt kein passendes Bier für dich.";
+// }else{}
 
 echo $output;
+
 
 // function get_marke($biermarke){
 //     echo $biermarke;

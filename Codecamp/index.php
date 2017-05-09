@@ -112,7 +112,7 @@ require_once('system/security.php');
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!--Bootstrap JS-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    
+
 
     <script>
     // ajax Befehle:
@@ -138,10 +138,15 @@ require_once('system/security.php');
           success:function( get_data ) {             // Bei erfolgreichem Request: Den zu empfangenden Daten einen "Namen" zuweisen.
             // console.log(get_data);
             html = $.parseHTML( get_data );                    // empfangenen Text als HTML parsen
+            if (get_data =""){
+                console.log("keine Ausgabe");
+            }
             $("#output").empty();                           //Das Ausgabefeld mit der ID output wird geleert
             $(html).hide().prependTo("#output").show(500); // Das Ausgabefeld wird mit dem Inhalt gefüllt.
+            console.log(get_data);
 
         }
+
 
 
 
