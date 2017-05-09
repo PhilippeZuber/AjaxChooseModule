@@ -138,9 +138,6 @@ require_once('system/security.php');
           success:function( get_data ) {             // Bei erfolgreichem Request: Den zu empfangenden Daten einen "Namen" zuweisen.
             // console.log(get_data);
             html = $.parseHTML( get_data );                    // empfangenen Text als HTML parsen
-            if (get_data =""){
-                console.log("keine Ausgabe");
-            }
             $("#output").empty();                           //Das Ausgabefeld mit der ID output wird geleert
             $(html).hide().prependTo("#output").show(500); // Das Ausgabefeld wird mit dem Inhalt gefüllt.
             console.log(get_data);
