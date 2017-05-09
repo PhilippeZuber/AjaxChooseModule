@@ -1,0 +1,8 @@
+body{
+    margin: 0;
+}
+
+.background {
+    background-image: url("bilder/background_bier2.jpg");
+    background-size: 100%, 200rem;
+}

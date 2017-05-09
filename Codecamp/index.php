@@ -43,11 +43,12 @@ require_once('system/security.php');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bierkompass</title>
+    <link href="style.css" rel="stylesheet">
   </head>
   <body>
       <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <h1>Wähle deine Kriterien</h2>
                 <h2>Biermarke</h2>
                 <form class="form-inline" method="get" action="index.php">
@@ -62,7 +63,7 @@ require_once('system/security.php');
                             <option value="6">Doppelleu</option>
                         </select>
                     </div>
-                    <br><br>
+                    <br><br><br><br><br><br>
                     <h2>Biersorte</h2>
 
                     <select name="sorte" class="auswahl" id="sorte">
@@ -75,7 +76,7 @@ require_once('system/security.php');
                         <option value="7">Ale</option>
                         <option value="8">Dunkel</option>
                     </select>
-                    <br><br>
+                    <br><br><br><br><br><br>
                     <h2>Einheit</h2>
 
                     <select name="form" class="auswahl" id="form">
@@ -84,7 +85,7 @@ require_once('system/security.php');
                         <option value="2">Dose</option>
                         <option value="3">Flasche</option>
                     </select>
-                    <br><br>
+                    <br><br><br><br><br><br>
                     <h2>Mit oder ohne Pfupf?</h2>
 
                     <select name="alkohol" class="auswahl" id="alkohol">
@@ -92,16 +93,14 @@ require_once('system/security.php');
                         <option value="1">Nein</option>
                         <option value="0">Ja</option>
                     </select>
-
-
-
-                    <button type="submit" name="filter-submit" class="btn btn-default">Filter anwenden</button>
                 </form>
-                <br><br><br>
+                <br><br><br><br><br><br><br>
+            </div>
+            <div class="col-md-6">
                 <p id="output"></p>
             </div>
-        </div>
-    </div>
+        </div> <!--Close Row-->
+    </div> <!--Close container fluid-->
 
 
 
@@ -115,7 +114,7 @@ require_once('system/security.php');
 
     $(".auswahl").change(function(event) {         // Bei Klick auf den "posten"-Button
     event.preventDefault();                           // Absenden des Formulars unterbinden
-    var marke = $('#marke option:selected').attr( "value");
+    var marke = $('#marke option:selected').attr( "value"); //
     var sorte = $('#sorte option:selected').attr( "value");
     var form = $('#form option:selected').attr( "value");
     var alkohol = $('#alkohol option:selected').attr( "value");
