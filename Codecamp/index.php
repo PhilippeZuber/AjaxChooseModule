@@ -43,31 +43,33 @@ require_once('system/security.php');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bierkompass</title>
-    <link href="style.css" rel="stylesheet">
+
   </head>
   <body>
       <div class="container-fluid">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5 .col-md-offset-1">
                 <h1>Wähle deine Kriterien</h2>
-                <h2>Biermarke</h2>
+                    <br>
+                <h2>Welche Marke ist dir lieb?</h2>
                 <form class="form-inline" method="get" action="index.php">
                     <div class="form-group">
                         <select name="marke" class="auswahl" id="marke">
-                            <option value="" selected>Welche Marke ist dir lieb?</option>
+                            <option value="" selected>Alle Brauereien</option>
                             <option value="1">Schützengarten</option>
                             <option value="2">Feldschlösschen</option>
                             <option value="3">Appenzeller Bier</option>
                             <option value="4">Brauerei Fischerstube</option>
                             <option value="5">Cardinal</option>
                             <option value="6">Doppelleu</option>
+
                         </select>
                     </div>
                     <br>
-                    <h2>Biersorte</h2>
+                    <h2>Was trifft deinen Geschmack?</h2>
 
                     <select name="sorte" class="auswahl" id="sorte">
-                        <option value="">Wie solls schmecken?</option>
+                        <option value="">Alle Sorten</option>
                         <option value="1">Lager</option>
                         <option value="3">Weizen</option>
                         <option value="4">Naturtrüeb</option>
@@ -77,27 +79,28 @@ require_once('system/security.php');
                         <option value="8">Dunkel</option>
                     </select>
                     <br>
-                    <h2>Einheit</h2>
+                    <h2>Woraus trinkst du am liebsten?</h2>
 
                     <select name="form" class="auswahl" id="form">
-                        <option value="">Wie trinkst du es am liebsten?</option>
-                        <option value="1">Glas</option>
+                        <option value="">Egal</option>
+                        <option value="1">Flasche</option>
                         <option value="2">Dose</option>
-                        <option value="3">Flasche</option>
+                        <option value="3">Fässli</option>
                     </select>
                     <br>
-                    <h2>Mit oder ohne Alkohol?</h2>
+                    <h2>Trinkst du gerne Alkoholfrei?</h2>
 
                     <select name="alkohol" class="auswahl" id="alkohol">
-                        <option value="">Alkoholfrei?</option>
-                        <option value="1">Nein</option>
+                        <option value="">Egal</option>
+                        <option value="1">Spinnsch?</option>
                         <option value="0">Ja</option>
                     </select>
                 </form>
                 <br>
             </div>
             <div class="col-md-5 .col-md-offset-1">
-				<p>Hallo gugus</p>
+                <br><br><br><br>
+				<!-- <h2>Das Bier-Orakel hat entschieden:</h2> -->
                 <p id="output"></p>
             </div>
 		  </div> <!--Close Row-->
@@ -112,7 +115,7 @@ require_once('system/security.php');
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!--Bootstrap JS-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+    <link href="style.css" rel="stylesheet">
 
     <script>
     // ajax Befehle:
@@ -123,7 +126,7 @@ require_once('system/security.php');
     var sorte = $('#sorte option:selected').attr( "value");
     var form = $('#form option:selected').attr( "value");
     var alkohol = $('#alkohol option:selected').attr( "value");
-    console.log(marke);   // User_ID auslesen
+
 
     // txt = $("#the_text").val();   // Posttext aus der Textarea auslesen
     // if(txt != ""){                // Sicherheitsabfrage, damit keine leeren Posts erzeugt werden.
@@ -141,6 +144,7 @@ require_once('system/security.php');
             $("#output").empty();                           //Das Ausgabefeld mit der ID output wird geleert
             $(html).hide().prependTo("#output").show(500); // Das Ausgabefeld wird mit dem Inhalt gefüllt.
             console.log(get_data);
+
 
         }
 

@@ -9,11 +9,17 @@ $form = $_REQUEST['bierform'];
 $alkohol = $_REQUEST['alkoholgehalt'];
 
 $ausgabe = get_selection($marke, $sorte, $form, $alkohol);
+$echo_ok = true;
+
+echo "<h2>Das Bier-Orakel hat entschieden:</h2><br>";
+
+        while($output = mysqli_fetch_assoc($ausgabe)){    //Die erhaltenen Werte müssen in ein Array umgewandelt werden
+        echo "$output[name]<br>";
+    }
 
 
-while($output = mysqli_fetch_assoc($ausgabe)){    //Die erhaltenen Werte müssen in ein Array umgewandelt werden
-      echo "$output[name]<br>";
-  }  //Mit der While-Schlaufe wird für jeden Inhalt des Arrays, dessen Name ausgegeben.
+
+   //Mit der While-Schlaufe wird für jeden Inhalt des Arrays, dessen Name ausgegeben.
   //print_r($selection_output);
 
 
@@ -21,7 +27,7 @@ while($output = mysqli_fetch_assoc($ausgabe)){    //Die erhaltenen Werte müssen
 //      echo "Du bist zu wählerisch! Es gibt kein passendes Bier für dich.";
 // }else{}
 
-echo $output;
+// echo $output;
 
 
 // function get_marke($biermarke){
