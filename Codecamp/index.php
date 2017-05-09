@@ -63,7 +63,7 @@ require_once('system/security.php');
                             <option value="6">Doppelleu</option>
                         </select>
                     </div>
-                    <br><br><br><br><br><br>
+                    <br>
                     <h2>Biersorte</h2>
 
                     <select name="sorte" class="auswahl" id="sorte">
@@ -76,7 +76,7 @@ require_once('system/security.php');
                         <option value="7">Ale</option>
                         <option value="8">Dunkel</option>
                     </select>
-                    <br><br><br><br><br><br>
+                    <br>
                     <h2>Einheit</h2>
 
                     <select name="form" class="auswahl" id="form">
@@ -85,7 +85,7 @@ require_once('system/security.php');
                         <option value="2">Dose</option>
                         <option value="3">Flasche</option>
                     </select>
-                    <br><br><br><br><br><br>
+                    <br>
                     <h2>Mit oder ohne Alkohol?</h2>
 
                     <select name="alkohol" class="auswahl" id="alkohol">
@@ -94,7 +94,7 @@ require_once('system/security.php');
                         <option value="0">Ja</option>
                     </select>
                 </form>
-                <br><br><br><br><br><br><br>
+                <br>
             </div>
             <div class="col-md-5 .col-md-offset-1">
 				<p>Hallo gugus</p>
